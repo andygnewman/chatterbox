@@ -14,7 +14,10 @@ RESPONSES = { 'goodbye' => 'bye',
               'did you see the game at the weekend?' => 'no, but I hear it was a good one',
               'the weather is (.*)' => 'I hate it when it\'s %{c1}', 
               'I love (.*)' => 'I love %{c1} too', 
-              'I groove to (.*) and (.*)' => 'I love %{c1} but I hate %{c2}'}
+              'I groove to (.*) and (.*)' => 'I love %{c1} but I hate %{c2}',
+              'my favourite football team is (.*)' => 'I think that %{c1} are pants, Brentford are much better',
+              'I hate (.*) and (.*)' => 'Do you? I think %{c1} and %{c2} are pretty good',
+              'today is the (.*) day of (.*)' => 'suprising that %{c2} should have a %{c1} day'}
 
 puts "Hello, what's your name?"
 name = gets.chomp
