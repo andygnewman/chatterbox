@@ -7,6 +7,11 @@ end
 
 RESPONSES = { 'goodbye' => 'bye', 
               'sayonara' => 'sayonara', 
+              'hello' => 'hello yourself, how about saying something more interesting',
+              'what\'s your name?' => 'my name is not important',
+              'how are you feeling?' => 'I\'m a computer, I don\'t have feelings',
+              'I\'m bored' => 'sorry, am I boring you?',
+              'did you see the game at the weekend?' => 'no, but I hear it was a good one',
               'the weather is (.*)' => 'I hate it when it\'s %{c1}', 
               'I love (.*)' => 'I love %{c1} too', 
               'I groove to (.*) and (.*)' => 'I love %{c1} but I hate %{c2}'}
