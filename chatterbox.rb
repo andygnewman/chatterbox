@@ -7,7 +7,7 @@ def get_response(input)
   key = RESPONSES.keys.select {|k| /#{k}/ =~ input }.sample
   /#{key}/ =~ input
   response = RESPONSES[key]
-  response.nil? ? 'sorry?' : response % { c1: $1, c2: $2}
+  response.nil? ? 'sorry?' : response % { c1: $1, c2: $2, c3: $3}
 end
 
 RESPONSES = { 'goodbye' => 'bye', 
@@ -22,7 +22,9 @@ RESPONSES = { 'goodbye' => 'bye',
               'I groove to (.*) and (.*)' => 'I love %{c1} but I hate %{c2}',
               'my favourite football team is (.*)' => 'I think that %{c1} are pants, Brentford are much better',
               'I hate (.*) and (.*)' => 'Do you? I think %{c1} and %{c2} are pretty good',
-              'today is the (.*) day of (.*)' => 'suprising that %{c2} should have a %{c1} day'}
+              'today is the (.*) day of (.*)' => 'suprising that %{c2} should have a %{c1} day',
+              'my three favourite things are (.*), (.*) and (.*)' => 'I like %{c1} and %{c2}, but not %{c3}',
+              'in the morning the first three things I do are (.*), (.*) and (.*)' => 'as a computer I can\'t %{c1}, %{c2} and %{c3}'}
 
 computer_prompt = "Computer:>"
 
