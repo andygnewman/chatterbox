@@ -1,3 +1,8 @@
+class String
+  def red;            "\033[31m#{self}\033[0m" end
+  def blue;           "\033[34m#{self}\033[0m" end
+end 
+
 def get_response(input)
   key = RESPONSES.keys.select {|k| /#{k}/ =~ input }.sample
   /#{key}/ =~ input
@@ -21,17 +26,17 @@ RESPONSES = { 'goodbye' => 'bye',
 
 computer_prompt = "Computer:>"
 
-puts "#{computer_prompt} Hello, what's your name?"
-print "Username:> "
+puts "#{computer_prompt} Hello, what's your name?".red
+print "Username:> ".blue
 name = gets.chomp
-puts "#{computer_prompt} Hello #{name}"
+puts "#{computer_prompt} Hello #{name}".red
 
-print "User #{name}:> "  # need to refactor this as repeated
+print "User #{name}:> ".blue  # need to refactor this as repeated
 
-while(input = gets.chomp) do
+while(input = gets.chomp) do # need to colour the user input
   if input.downcase == 'quit'
     break
   end
-  puts "#{computer_prompt} #{get_response(input)}"
-  print "User #{name}:> "
+  puts "#{computer_prompt} #{get_response(input)}".red
+  print "User #{name}:> ".blue
 end
