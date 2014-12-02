@@ -23,5 +23,8 @@ puts "Hello, what's your name?"
 name = gets.chomp
 puts "Hello #{name}"
 while(input = gets.chomp) do
+  if input.downcase == 'quit'
+    break
+  end
   puts get_response(input)
 end
