@@ -19,12 +19,19 @@ RESPONSES = { 'goodbye' => 'bye',
               'I hate (.*) and (.*)' => 'Do you? I think %{c1} and %{c2} are pretty good',
               'today is the (.*) day of (.*)' => 'suprising that %{c2} should have a %{c1} day'}
 
-puts "Hello, what's your name?"
+computer_prompt = "Computer:>"
+
+puts "#{computer_prompt} Hello, what's your name?"
+print "Username:> "
 name = gets.chomp
-puts "Hello #{name}"
+puts "#{computer_prompt} Hello #{name}"
+
+print "User #{name}:> "  # need to refactor this as repeated
+
 while(input = gets.chomp) do
   if input.downcase == 'quit'
     break
   end
-  puts get_response(input)
+  puts "#{computer_prompt} #{get_response(input)}"
+  print "User #{name}:> "
 end
