@@ -7,8 +7,16 @@ def get_response(input)
   key = RESPONSES.keys.select {|k| /#{k}/ =~ input }.sample
   /#{key}/ =~ input
   response = RESPONSES[key]
-  response.nil? ? 'sorry?' : response % { c1: $1, c2: $2, c3: $3}
+  response.nil? ? new_response(input) : response % { c1: $1, c2: $2, c3: $3}
 end
+
+def new_response(input)
+  puts "Computer:> What response should I give to \"#{input}\"?".red # need to use variable for computer prompt here
+  print "User:> ".blue # need to add name into the prompt here
+  new_answer = gets.chomp
+  RESPONSES[input.to_sym] = new_answer
+  return "I have remembered the response of \"#{new_answer}\" to \"#{input}\". Try me again."
+end  
 
 RESPONSES = { 'goodbye' => 'bye', 
               'sayonara' => 'sayonara', 
