@@ -1,6 +1,5 @@
 # Things that could be improved
-# better way of doing the user prompt & computer prompt that doesn't repeat so much
-
+# can I do away with global variables for name and computer prompt?
 
 require 'yaml'
 filename = 'responses.txt'
@@ -19,11 +18,15 @@ end
 
 def new_response(input)
   puts "#{$computer_prompt} What response should I give to \"#{input}\"?".red
-  print "User #{$name}:> ".blue
+  user_prompt
   new_answer = gets.chomp
   RESPONSES[input] = new_answer
   return "Thanks #{$name}, I have memorised \"#{new_answer}\" in response to \"#{input}\". Try me again."
 end  
+
+def user_prompt
+  print "User #{$name}:> ".blue
+end 
 
 $computer_prompt = "Computer:>"
 
@@ -31,7 +34,7 @@ puts "#{$computer_prompt} Hello, what's your name?".red
 print "Username:> ".blue
 $name = gets.chomp
 puts "#{$computer_prompt} Hello #{$name}".red
-print "User #{$name}:> ".blue
+user_prompt
 
 RESPONSES = YAML::load_file filename
 
@@ -44,5 +47,5 @@ while(input = gets.chomp) do # need to colour the user input
     break
   end
   puts "#{$computer_prompt} #{get_response(input)}".red
-  print "User #{$name}:> ".blue
+  user_prompt
 end
