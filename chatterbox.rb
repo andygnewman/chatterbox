@@ -1,6 +1,3 @@
-# Things that could be improved
-# can I do away with global variables for name and computer prompt?
-
 require 'yaml'
 filename = 'responses.txt'
 
@@ -17,7 +14,8 @@ def get_response(input)
 end
 
 def new_response(input)
-  puts "#{$computer_prompt} What response should I give to \"#{input}\"?".red
+  computer_prompt
+  puts "What response should I give to \"#{input}\"?".red
   user_prompt
   new_answer = gets.chomp
   RESPONSES[input] = new_answer
@@ -28,17 +26,21 @@ def user_prompt
   print "User #{$name}:> ".blue
 end 
 
-$computer_prompt = "Computer:>"
+def computer_prompt
+print "Computer:> "
+end
 
-puts "#{$computer_prompt} Hello, what's your name?".red
+computer_prompt
+puts "Hello, what's your name?".red
 print "Username:> ".blue
 $name = gets.chomp
-puts "#{$computer_prompt} Hello #{$name}".red
+computer_prompt
+puts "Hello #{$name}".red
 user_prompt
 
 RESPONSES = YAML::load_file filename
 
-while(input = gets.chomp) do # need to colour the user input
+while(input = gets.chomp) do
   if input.downcase == 'quit'
     save_responses = RESPONSES.to_yaml
     File.open(filename, 'w') do |f|
@@ -46,6 +48,7 @@ while(input = gets.chomp) do # need to colour the user input
     end
     break
   end
-  puts "#{$computer_prompt} #{get_response(input)}".red
+  computer_prompt
+  puts "#{get_response(input)}".red
   user_prompt
 end
