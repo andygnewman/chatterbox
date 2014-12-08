@@ -1,0 +1,29 @@
+---
+goodbye: bye
+sayonara: sayonara
+hello: hello yourself, how about saying something more interesting
+what's your name?: my name is not important
+how are you feeling?: I'm a computer, I don't have feelings
+I'm bored: sorry, am I boring you?
+did you see the game at the weekend?: no, but I hear it was a good one
+the weather is (.*): I hate it when it's %{c1}
+I love (.*): I love %{c1} too
+I groove to (.*) and (.*): I love %{c1} but I hate %{c2}
+my favourite football team is (.*): I think that %{c1} are pants, Brentford are much
+  better
+I hate (.*) and (.*): Do you? I think %{c1} and %{c2} are pretty good
+today is the (.*) day of (.*): suprising that %{c2} should have a %{c1} day
+my three favourite things are (.*), (.*) and (.*): I like %{c1} and %{c2}, but not
+  %{c3}
+in the morning the first three things I do are (.*), (.*) and (.*): as a computer
+  I can't %{c1}, %{c2} and %{c3}
+this is tedious: well I'm having fun
+what's up: nothing much
+how's it hanging?: it hangs just fine
+I'm having fun: I'm glad one of us is
+this is pretty cool: damn right
+just some refactoring to do: yeah, the boring stuff
+do you think this works?: almost but could always do with some more refactoring
+how clever are you?: I'm pretty dumb really
+what's for lunch?: I was thinking of having beans on toast
+
