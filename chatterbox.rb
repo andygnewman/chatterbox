@@ -1,10 +1,8 @@
 require 'yaml'
-filename = 'responses.txt'
+require 'bundler/setup'
+require 'colorize'
 
-class String
-  def red;            "\033[31m#{self}\033[0m" end
-  def blue;           "\033[34m#{self}\033[0m" end
-end 
+filename = 'responses.txt'
 
 def get_response(input)
   key = RESPONSES.keys.select {|k| /#{k}/ =~ input }.sample
@@ -15,7 +13,7 @@ end
 
 def new_response(input)
   computer_prompt
-  puts "What response should I give to \"#{input}\"?".red
+  puts "What response should I give to \"#{input}\"?".colorize(:red)
   user_prompt
   new_answer = gets.chomp
   RESPONSES[input] = new_answer
@@ -23,19 +21,19 @@ def new_response(input)
 end  
 
 def user_prompt
-  print "User #{$name}:> ".blue
+  print "User #{$name}:> ".colorize(:blue)
 end 
 
 def computer_prompt
-print "Computer:> "
+print "Computer:> ".colorize(:red)
 end
 
 computer_prompt
-puts "Hello, what's your name?".red
-print "Username:> ".blue
+puts "Hello, what's your name?".colorize(:red)
+print "Username:> ".colorize(:blue)
 $name = gets.chomp
 computer_prompt
-puts "Hello #{$name}".red
+puts "Hello #{$name}".colorize(:red)
 user_prompt
 
 RESPONSES = YAML::load_file filename
@@ -49,6 +47,6 @@ while(input = gets.chomp) do
     break
   end
   computer_prompt
-  puts "#{get_response(input)}".red
+  puts "#{get_response(input)}".colorize(:red)
   user_prompt
 end
